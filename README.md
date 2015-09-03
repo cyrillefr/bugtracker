@@ -18,41 +18,41 @@ and play with the following concepts
     *   Browser does not retrieve if change after #
 
 
-3.  Client/Server
+4.  Client/Server
     *   package json, server side dependencies
     *   client side dependencies: classical client (html)
     *   /public/client: can be served
 
 
-4.  Bootstrap
+5.  Bootstrap
     *   Use of  angular-ui-bootstrap package => no conflict between Angular and jQuery(Bootstrap depends on jQuery) but that module has been rewritten WITHOUT jQuery
     *   Rule of thumb: never use jQuery with Angular
 
 
-5.  Routers
+6.  Routers
     *   Express router  for '/' and for all ajax called resources 
     *   Angular router to call templates/partials
 
 
-6.  Controllers & Module
-Angular Cornerstone
-refresh controllers with events
-after insert, broadcast of an event, onEvent defined in controller -> call to function that cause list to refresh
+7.  Controllers & Module
+    *   Angular Cornerstone
+    *   refresh controllers with events:
+    *   after insert, broadcast of an event, onEvent defined in controller -> call to function that cause list to refresh
 
 
-7.  MVC 
+8.  MVC 
     *   1 file for module definition and router
     *   1 file for controllers that aim for app browsing
     *   conf directory: java style
     *   model directory
 
 
-8.  Test
+9.  Test
     *   Mocha: npm install -g mocha
     *   For now: very simple
     *   type mocha and look for test directory
 
-9.  Test
+10.  Misc
     *   package.json:  
     *   "scripts": {"start": "node ./bin/www",  "test": "mocha" }  
     *   => npm test : starts testing
