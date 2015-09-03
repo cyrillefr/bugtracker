@@ -13,16 +13,20 @@ npm start; npm test (->cf. pacakge.json variable scripts)
 
 **** Single Page App
 Angular/Node: one can make "classical" websites by using node router
+
 One single page: ng-view directive + Angular router (<> Node router).
+
 Directive ng-view: here are inserted templates (bare ajax principle)
+
 Url change BUT after #, which means: no classical refresh
+
 Browser does not retrieve if change after #
 
 
 ***/ Client/Server
 - package json, server side dependencies
 - client side dependencies: classical client (html)
-- /public/client: can be serve
+- /public/client: can be served
 
 
 **** Bootstrap
