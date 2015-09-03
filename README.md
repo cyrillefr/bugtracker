@@ -37,7 +37,7 @@ Rule of thumb: never use jQuery with Angular
 Angular Cornerstone
 
 *** MVC  
-1 file for module definition and router  
+*   1 file for module definition and router  
 1 file for controllers that aim for app browsing  
 conf directory: java style
 
