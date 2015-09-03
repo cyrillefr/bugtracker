@@ -36,12 +36,12 @@ Rule of thumb: never use jQuery with Angular
 **** Controllers & Module
 Angular Cornerstone
 
-*** MVC 
+*** MVC  
 1 file for module definition and router  
 1 file for controllers that aim for app browsing
 
 
-*** Test
+*** Test  
 Mocha: npm install -g mocha  
 For now: very simple  
 type mocha and look for test directory
