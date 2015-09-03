@@ -3,10 +3,10 @@ very simple drill to play a bit with mean
 
 and play with the following concepts
 
-**** use of npm
+**** use of npm  
 npm start; npm test (->cf. pacakge.json variable scripts)
 
-**** refresh controllers with events
+**** refresh controllers with events  
 -> after insert, broadcast of an event, onEvent defined in controller -> call to function that cause list to refresh
 
 **** CRUD (mongo)
@@ -38,7 +38,8 @@ Angular Cornerstone
 
 *** MVC  
 1 file for module definition and router  
-1 file for controllers that aim for app browsing
+1 file for controllers that aim for app browsing  
+conf directory: java style
 
 
 *** Test  
@@ -46,7 +47,7 @@ Mocha: npm install -g mocha
 For now: very simple  
 type mocha and look for test directory
 
-- package.json: 
+- package.json:  
 "scripts": {"start": "node ./bin/www",  "test": "mocha" }  
 => npm test : starts testing
 
