@@ -12,14 +12,10 @@ npm start; npm test (->cf. pacakge.json variable scripts)
 **** CRUD (mongo)
 
 **** Single Page App
-Angular/Node: one can make "classical" websites by using node router
-
-One single page: ng-view directive + Angular router (<> Node router).
-
-Directive ng-view: here are inserted templates (bare ajax principle)
-
-Url change BUT after #, which means: no classical refresh
-
+Angular/Node: one can make "classical" websites by using node router  
+One single page: ng-view directive + Angular router (<> Node router).  
+Directive ng-view: here are inserted templates (bare ajax principle)  
+Url change BUT after #, which means: no classical refresh  
 Browser does not retrieve if change after #
 
 
@@ -41,16 +37,16 @@ Rule of thumb: never use jQuery with Angular
 Angular Cornerstone
 
 *** MVC 
-1 file for module definition and router
+1 file for module definition and router  
 1 file for controllers that aim for app browsing
 
 
 *** Test
-Mocha: npm install -g mocha
-For now: very simple
+Mocha: npm install -g mocha  
+For now: very simple  
 type mocha and look for test directory
 
 - package.json: 
-"scripts": {"start": "node ./bin/www",  "test": "mocha" }
+"scripts": {"start": "node ./bin/www",  "test": "mocha" }  
 => npm test : starts testing
 
