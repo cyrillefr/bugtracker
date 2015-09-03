@@ -57,3 +57,8 @@ and play with the following concepts
     *   "scripts": {"start": "node ./bin/www",  "test": "mocha" }  
     *   => npm test : starts testing
 
+11. TODO
+
+custom directive querySelector  localization ? promises-asynch ? ui bootstrap  light stats with D3 etc... 
+
+
