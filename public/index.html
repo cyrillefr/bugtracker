@@ -44,32 +44,66 @@
         </div>
     </nav>
 
-        <div class="container" ng-controller="listCtrl" >
-            <table>            
-                <tr ng-if="titles.length > 0" ng-repeat="y in titles">
-                    <td ng-class="myVar" ng-mouseover="myVar='not-selected'" ng-mouseleave="myVar='selected'">
-                        {{ y.title  }}  {{ y.description  }}
-                    </td>
-                </tr>
-                <tr ng-if="titles.length == 0">
-                    <td>
-                        no data                    
-                    </td>                
-                </tr>
-            </table>
+        <div class="container" ng-controller="list10BugsCtrl" >
+            <br/><br/>
+            <div class="bs-example">            
+                <table class="table">
+                <caption>Last ten bugs</caption>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Project name</th>
+                    </tr>
+                </thead>       
+                    <tr ng-if="bugs.length > 0" ng-repeat="bug in bugs" ng-class="myVar" ng-mouseover="myVar='not-selected'" ng-mouseleave="myVar='selected'">
+                        <td>
+                            {{ bug.title }}
+                        </td>
+                        <td>
+                            {{ bug.description }}
+                        </td>
+                        <td>
+                            {{ bug.project_name }}
+                        </td>
+                    </tr>
+                    <tr ng-if="bugs.length == 0">
+                        <td colspan="3">
+                            There is no data.                    
+                        </td>                
+                    </tr>
+                </table>
+            </div>
         </div>
 
+
         <form name="formNewBug" ng-controller="insertCtrl" >
-        <div class="container" >    
-            <input type='text' ng-model='newBug.title' />  
-            <textarea ng-model='newBug.description'></textarea>
-            <input type='button' ng-click='addBug()'  value='Add bug ...' />
-            
-        </div>
+            <div class="container" >    
+                <!-- bootstrap style -->
+                <div class="form-group">
+                    <label for="inputTitle">Title</label>
+                    <input id="inputTitle" class="form-control"  type='text' ng-model='newBug.title' />      
+                </div>                
+                <div class="form-group">
+                    <label for="txtDescription">Description</label>
+                    <textarea  id="txtDescription" class="form-control" ng-model='newBug.description'></textarea>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" ng-controller="listProjectsCtrl" >
+                        <option ng-if="projects.length > 0" ng-repeat="project in projects">
+                            {{ project.name }}
+                        </option>
+                        <option ng-if="projects.length == 0" >
+                            Problem loading projects
+                        </option>
+                    </select>
+                </div>
+                    <input class="btn btn-default" type='button' ng-click='addBug()'  value='Add bug ...' />            
+            </div>
         </form>
 
 
-        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <!-- main content and injected view classical Ajax -->
         <div id="main">
          
 
@@ -78,7 +112,7 @@
             <div ng-view></div>
         </div>
 
-        <!--  logique scripts a mettre ds une seule page-->
+        <!--  all these scripts should be put in one file to optimize loading-->
         <script src="/javascripts/angular/angular.js"></script>
         <script src="/javascripts/angular/angular-route.js"></script>
         <script src="/javascripts/angular/ui-bootstrap.js"></script>
@@ -89,28 +123,42 @@
 
 
       
-
-            appBugTracker.controller('listCtrl', function($scope, $http, $rootScope, $timeout) {
+            //Datas for bugs list
+            appBugTracker.controller('list10BugsCtrl', function($scope, $http, $rootScope, $timeout) {
                 
-                $scope.loadData = function () {
+                $scope.load10BugsData = function () {
                     $http.get('/models/bugs_list.js').
                     then(function(response) {
-                        $scope.titles = response.data;                
+                        $scope.bugs = response.data;                
                     }, function(response) {
             
                     });
                 };
 
                 //initial load
-                $scope.loadData();
+                $scope.load10BugsData();
 
                 //On this event, reload datas
                 $scope.$on('BUG_INSERTED_IN_LIST', function () {
                     $timeout(function(){
-                        $scope.loadData();
+                        $scope.load10BugsData();
                     }, 0, false) ;
                 })
             });
+
+        //Datas for projects list load 
+        appBugTracker.controller('listProjectsCtrl', function($scope, $http) {
+
+            $http.get('/models/projects_list.js').
+                    then(function(response) {
+                        $scope.projects = response.data;               
+                    }, function(response) {
+            
+                    });
+
+         });
+
+
 
             appBugTracker.controller('insertCtrl', function($scope, $http, $rootScope) {
 

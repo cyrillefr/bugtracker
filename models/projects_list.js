@@ -4,8 +4,7 @@ var MongoClient = require('mongodb').MongoClient
     , format = require('util').format
     , assert = require('assert');
 
-
-var myBugsCollection = function (callback){
+var projectsCollection = function (callback){
     console.log('Connect to DB: ' + btConfig.getProperty('DB_CONNECTION_STRING'));
     
     MongoClient.connect(btConfig.getProperty('DB_CONNECTION_STRING'), function(err, db) {
@@ -13,9 +12,8 @@ var myBugsCollection = function (callback){
         if(err) throw err;
  
         var collection = db
-            .collection('bugs')
+            .collection('projects')
             .find({})
-            .limit(10)
             .toArray(function(err, docs) {
                 console.dir(docs);
 
@@ -33,10 +31,9 @@ var myBugsCollection = function (callback){
 
 exports.getBugsCollection = function (res){
     //send JSON response      
-    myBugsCollection(
+    projectsCollection(
         function(data){
             res.json(data)
     });
     
 };
-

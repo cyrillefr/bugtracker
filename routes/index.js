@@ -32,5 +32,17 @@ router.post('/models/insert_bug.js', function(req, res, next) {
 
 });
 
+//Projets list
+router.get('/models/projects_list.js', function(req, res, next) {
+
+    //model
+    var project_list = require('../models/projects_list.js');
+
+    //pass res to write json to res
+   project_list.getBugsCollection(res);
+
+});
+
+
 
 module.exports = router;
